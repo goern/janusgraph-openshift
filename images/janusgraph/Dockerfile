@@ -18,7 +18,7 @@ RUN yum install -y unzip &&\
     unzip /opt/janusgraph.zip -d /opt/ && \
     rm /opt/janusgraph.zip && \
     mkdir -p /opt/janusgraph-0.2.0-hadoop2/db/berkeley && \
-    chmod 755 -R /opt/janusgraph-0.2.0-hadoop2/db/ && \
+    chmod 777 -R /opt/janusgraph-0.2.0-hadoop2/db/ && \
     chown 1011:0 -R /opt/janusgraph-0.2.0-hadoop2/
 
 USER 1011
