@@ -9,7 +9,9 @@ LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSear
     io.openshift.expose-services="8080:http, 8182:http, 8184:http" \
     io.openshift.tags="cassandra,elasticsearch,graph,gremlin,janusgraph" \
     architecture=x86_64 \
-    name="ai-coe/janusgraph"
+    name="ai-coe/janusgraph" \
+    vendor="Red Hat CTO Office - AI CoE" \
+    license="GPLv3" 
 
 WORKDIR /opt/janusgraph-${JG_VER}
 
@@ -24,7 +26,7 @@ RUN yum install -y unzip &&\
 USER 1011
 
 ADD startup.sh /opt/janusgraph-0.2.0-hadoop2/
-
+ADD aicoe-berkeleyje-lucene.properties /opt/janusgraph-0.2.0-hadoop2/conf
 #ADD configurations/gremlin-server/janusgraph-berkeleyje-server.properties /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/server.properties
 #ADD configurations/gremlin-server/gremlin-server.yaml /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/gremlin-server.yaml
 
