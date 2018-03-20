@@ -85,7 +85,6 @@ pipeline {
             }
         }
         stage("Build Container Images") {
-            parallel {
                 stage("JanusGraph") {
                     steps {
                         echo "Building JanusGraph container image..."
@@ -94,18 +93,6 @@ pipeline {
                         }
                     }   
                 } 
-            }
-        }
-        stage("Testing") {
-            failFast true
-            parallel {
-                stage("Functional Tests") {
-                    steps {
-                        sh 'echo noop pytest'
-                        sh 'mkdir reports/ && touch reports/noop.xml'
-                    }
-                }
-            }
         }
         stage("Image Tag Report") {
             steps {
@@ -118,8 +105,6 @@ pipeline {
     post {
         always {
             script {
-                junit 'reports/*.xml'
-
                 String prMsg = ""
                 if (env.ghprbActualCommit != null && env.ghprbActualCommit != "master") {
                     prMsg = "(PR #${env.ghprbPullId} ${env.ghprbPullAuthorLogin})"
@@ -128,7 +113,6 @@ pipeline {
 
                 pipelineUtils.sendIRCNotification("${IRC_NICK}", IRC_CHANNEL, message)
                 mattermostSend channel: "#thoth-station", icon: 'https://avatars1.githubusercontent.com/u/33906690', message: "${message}"
-
             }
         }
         success {
