@@ -85,14 +85,12 @@ pipeline {
             }
         }
         stage("Build Container Images") {
-                stage("JanusGraph") {
-                    steps {
-                        echo "Building JanusGraph container image..."
-                        script {
-                            tagMap['janusgraph'] = aIStacksPipelineUtils.buildImageWithTag(CI_TEST_NAMESPACE, "janusgraph", '0.2.0')
-                        }
-                    }   
-                } 
+            steps {
+                echo "Building JanusGraph container image..."
+                script {
+                    tagMap['janusgraph'] = aIStacksPipelineUtils.buildImageWithTag(CI_TEST_NAMESPACE, "janusgraph", '0.2.0')
+                }
+            }
         }
         stage("Image Tag Report") {
             steps {
