@@ -10,7 +10,9 @@ LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSear
     io.openshift.tags="cassandra,elasticsearch,graph,gremlin,janusgraph" \
     architecture=x86_64 \
     name="ai-coe/janusgraph" \
-    vendor="Red Hat CTO Office - AI CoE" \
+    version="1.0.0" \
+    release="1" \
+    vendor="Red Hat Office of the CTO - AI CoE" \
     license="GPLv3" 
 
 WORKDIR /opt/janusgraph-${JG_VER}
