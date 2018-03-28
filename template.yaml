@@ -88,7 +88,7 @@ objects:
 - apiVersion: v1
   kind: Route
   metadata:
-    name: janusgraph-hostname
+    name: janusgraph
     labels:
       app: janusgraph
   spec:

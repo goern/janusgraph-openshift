@@ -43,7 +43,7 @@ library(identifier: "ci-pipeline@master",
                             )
 library(identifier: "ai-stacks-pipeline@master",
         retriever: modernSCM([$class: 'GitSCMSource',
-                              remote: "https://github.com/goern/AI-Stacks-pipeline",
+                              remote: "https://github.com/AICoE/AI-Stacks-pipeline",
                               traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
                                        [$class: 'RefSpecsSCMSourceTrait',
                                         templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
@@ -110,14 +110,20 @@ pipeline {
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
 
                 pipelineUtils.sendIRCNotification("${IRC_NICK}", IRC_CHANNEL, message)
-                mattermostSend channel: "#thoth-station", icon: 'https://avatars1.githubusercontent.com/u/33906690', message: "${message}"
             }
         }
         success {
             echo "All Systems GO!"
         }
         failure {
-            error "BREAK BREAK BREAK - build failed!"
+            script {
+
+                mattermostSend channel: "#thoth-station", 
+                    icon: 'https://avatars1.githubusercontent.com/u/33906690', 
+                    message: "${JOB_NAME} #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
+
+                error "BREAK BREAK BREAK - build failed!"
+            }
         }
     }
 }
