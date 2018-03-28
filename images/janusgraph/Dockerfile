@@ -19,7 +19,8 @@ RUN yum install -y unzip &&\
     rm /opt/janusgraph.zip && \
     mkdir -p /opt/janusgraph-0.2.0-hadoop2/db/berkeley && \
     chmod 777 -R /opt/janusgraph-0.2.0-hadoop2/db/ && \
-    chown 1011:0 -R /opt/janusgraph-0.2.0-hadoop2/
+    chown 1011:0 -R /opt/janusgraph-0.2.0-hadoop2/ && \
+    sed -i 's/^cache.db-cache = true/cache.db-cache = false/' /opt/janusgraph-0.2.0-hadoop2/conf/janusgraph-cassandra-es.properties
 
 USER 1011
 
