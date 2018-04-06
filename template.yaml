@@ -40,6 +40,7 @@ objects:
             - containerPort: 8182
               protocol: TCP
           readinessProbe:
+            # TODO: check for presence of the tmp file and tcp port connection in a shell script
             tcpSocket:
               port: 8182
             initialDelaySeconds: 20

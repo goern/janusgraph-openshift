@@ -30,6 +30,7 @@ RUN yum install -y unzip && \
 USER 1011
 
 ADD startup.sh /opt/janusgraph-0.2.0-hadoop2/
+ADD hack/files /opt/janusgraph-0.2.0-hadoop2/files/
 ADD aicoe-berkeleyje-lucene.properties /opt/janusgraph-0.2.0-hadoop2/conf
 #ADD configurations/gremlin-server/janusgraph-berkeleyje-server.properties /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/server.properties
 #ADD configurations/gremlin-server/gremlin-server.yaml /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/gremlin-server.yaml
