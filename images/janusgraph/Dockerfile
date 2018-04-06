@@ -17,7 +17,8 @@ LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSear
 
 WORKDIR /opt/janusgraph-${JG_VER}
 
-RUN yum install -y unzip && \
+# Netcat is needed for the readiness probe.
+RUN yum install -y unzip nc && \
     yum clean all -y && \
     curl -L -o /opt/janusgraph.zip https://github.com/JanusGraph/janusgraph/releases/download/v0.2.0/janusgraph-0.2.0-hadoop2.zip && \
     unzip /opt/janusgraph.zip -d /opt/ && \
