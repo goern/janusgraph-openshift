@@ -2,5 +2,5 @@
 
 :remote connect tinkerpop.server conf/remote.yaml session
 :remote console
-:load /home/fpokorny/git/thoth-common/janusgraph-openshift/images/janusgraph/hack/files/schema_def.groovy
+:load /opt/janusgraph-0.2.0-hadoop2/files/schema_def.groovy
 
