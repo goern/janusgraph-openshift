@@ -16,14 +16,15 @@ $BIN/gremlin.sh -e $FILES/schema.groovy
 if [ -n "$GREMLIN_USE_INDEXES" ]; then
 	echo "Preparing indexes..." 2>&1
 
-	for file in $FILES/indexes/*.groovy;
-		do  sh gremlin.sh -e $file
+	for file in $FILES/indexes/*.groovy; do
+		$BIN/gremlin.sh -e $file
 	done
 
-	sh gremlin.sh -e $FILES/submit-reindex-jobs.groovy
+	$BIN/gremlin.sh -e $FILES/submit-reindex-jobs.groovy
 
-	echo "Waiting for indexes to be propagated to cluster..." 2>&1; sleep 120
-	sh gremlin.sh -e $FILES/wait-for-indexes.yaml
+	echo "Waiting for indexes to be propagated to cluster..." 2>&1
+	sleep 120
+	$BIN/gremlin.sh -e $FILES/wait-for-indexes.yaml
 fi
 
 
