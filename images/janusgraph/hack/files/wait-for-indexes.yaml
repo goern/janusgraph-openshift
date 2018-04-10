@@ -1,0 +1,22 @@
+:remote connect tinkerpop.server conf/remote.yaml session
+:remote console
+
+graph.tx().rollback()
+
+mgmt = graph.openManagement()
+
+indexes = [
+  'byEdge',
+  'byIsSolvedBy',
+  'byPackage',
+  'byPythonPackageVersion',
+  'byRequires',
+  'byRPMPackageVersion',
+  'byRPMRequirement',
+  'byRuntimeEnvironment',
+  'bySoftwareStack',
+]
+
+indexes.each { i ->
+  mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.ENABLED).call()
+}
