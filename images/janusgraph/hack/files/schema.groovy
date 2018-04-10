@@ -2,6 +2,5 @@
 
 :remote connect tinkerpop.server conf/remote.yaml session
 :remote console
-
-mgmt = graph.openManagement()
+:load /home/fpokorny/git/thoth-common/janusgraph-openshift/images/janusgraph/hack/files/schema_def.groovy
 
