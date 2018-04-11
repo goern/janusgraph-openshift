@@ -7,7 +7,7 @@ mgmt = graph.openManagement()
 
 indexes = [
   'byEdge',
-  'byIsSolvedBy',
+  'bySolved',
   'byPackage',
   'byPythonPackageVersion',
   'byRequires',
