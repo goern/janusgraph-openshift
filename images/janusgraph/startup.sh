@@ -13,7 +13,7 @@ $BIN/janusgraph.sh start -v
 echo "Preparing schema..." 2>&1
 $BIN/gremlin.sh -e $FILES/schema.groovy
 
-if [ -n "$GREMLIN_USE_INDEXES" ]; then
+if [ -n "$JANUSGRAPH_USE_INDEXES" ]; then
 	echo "Preparing indexes..." 2>&1
 
 	for file in $FILES/indexes/*.groovy; do
