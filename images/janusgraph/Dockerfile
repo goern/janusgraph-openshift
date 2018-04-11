@@ -17,7 +17,8 @@ LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSear
 
 WORKDIR /opt/janusgraph-${JG_VER}
 
-RUN yum install -y unzip && \
+# Netcat is needed for the readiness probe.
+RUN yum install -y unzip nc && \
     yum clean all -y && \
     curl -L -o /opt/janusgraph.zip https://github.com/JanusGraph/janusgraph/releases/download/v0.2.0/janusgraph-0.2.0-hadoop2.zip && \
     unzip /opt/janusgraph.zip -d /opt/ && \
@@ -25,11 +26,16 @@ RUN yum install -y unzip && \
     mkdir -p /opt/janusgraph-0.2.0-hadoop2/db/berkeley && \
     chmod 777 -R /opt/janusgraph-0.2.0-hadoop2/db/ && \
     chown 1011:0 -R /opt/janusgraph-0.2.0-hadoop2/ && \
-    sed -i 's/^storage.backend=cassandrathrift/storage.backend=cql/' /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/janusgraph-cassandra-es-server.properties
+    sed -i 's/^storage.backend=cassandrathrift/storage.backend=cql/' /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/janusgraph-cassandra-es-server.properties && \
+    sed -i 's/^scriptEvaluationTimeout: 30000/scriptEvaluationTimeout: 70000/' /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/gremlin-server.yaml && \
+    echo 'schema.default=none' >> /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/janusgraph-cassandra-es-server.properties && \
+    chmod a+rw /etc/passwd  # needed for entrypoint
 
 USER 1011
 
+ADD entrypoint.sh /opt/janusgraph-0.2.0-hadoop2/
 ADD startup.sh /opt/janusgraph-0.2.0-hadoop2/
+ADD hack/files /opt/janusgraph-0.2.0-hadoop2/files/
 ADD aicoe-berkeleyje-lucene.properties /opt/janusgraph-0.2.0-hadoop2/conf
 #ADD configurations/gremlin-server/janusgraph-berkeleyje-server.properties /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/server.properties
 #ADD configurations/gremlin-server/gremlin-server.yaml /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/gremlin-server.yaml
@@ -39,5 +45,7 @@ EXPOSE 8182
 EXPOSE 8184
 
 VOLUME [ "/opt/janusgraph-${JG_VER}/data", "/opt/janusgraph-${JG_VER}/log" ]
+
+ENTRYPOINT ["/opt/janusgraph-0.2.0-hadoop2/entrypoint.sh"]
 
 CMD ["/bin/bash", "-e", "/opt/janusgraph-0.2.0-hadoop2/startup.sh"]

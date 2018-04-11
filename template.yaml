@@ -40,8 +40,8 @@ objects:
             - containerPort: 8182
               protocol: TCP
           readinessProbe:
-            tcpSocket:
-              port: 8182
+            exec:
+              command: ["sh", "/tmp/readiness.sh"]
             initialDelaySeconds: 20
             periodSeconds: 10
             timeoutSeconds: 10
