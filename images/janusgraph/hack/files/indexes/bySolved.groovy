@@ -16,7 +16,7 @@ type = mgmt.getPropertyKey('__type__')
 
 solver_datetime = mgmt.getPropertyKey('solver_datetime')
 solver_document_id = mgmt.getPropertyKey('solver_document_id')
-solver_name = mgmt.getPropertyKey('solver')
+solver_name = mgmt.getPropertyKey('solver_name')
 solver_version = mgmt.getPropertyKey('solver_version')
 
 solver_error = mgmt.getPropertyKey('solver_error')
