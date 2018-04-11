@@ -13,7 +13,7 @@ type = mgmt.getPropertyKey('__type__')
 
 analysis_datetime = mgmt.getPropertyKey('analysis_datetime')
 analysis_document_id = mgmt.getPropertyKey('analysis_document_id')
-analyzer = mgmt.getPropertyKey('analyzer')
+analyzer_name = mgmt.getPropertyKey('analyzer_name')
 analyzer_version = mgmt.getPropertyKey('analyzer_version')
 
 /*
@@ -24,7 +24,7 @@ mgmt.buildIndex('bySoftwareStack', Vertex.class) \
   .addKey(type) \
   .addKey(analysis_datetime) \
   .addKey(analysis_document_id) \
-  .addKey(analyzer) \
+  .addKey(analyzer_name) \
   .addKey(analyzer_version) \
   .buildCompositeIndex()
 

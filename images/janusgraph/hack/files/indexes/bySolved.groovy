@@ -16,22 +16,22 @@ type = mgmt.getPropertyKey('__type__')
 
 solver_datetime = mgmt.getPropertyKey('solver_datetime')
 solver_document_id = mgmt.getPropertyKey('solver_document_id')
-solver = mgmt.getPropertyKey('solver')
+solver_name = mgmt.getPropertyKey('solver')
 solver_version = mgmt.getPropertyKey('solver_version')
 
-installable = mgmt.getPropertyKey('installable')
+solver_error = mgmt.getPropertyKey('solver_error')
 
 /*
  * Indexes.
  */
-mgmt.buildIndex('byIsSolvedBy', Edge.class) \
+mgmt.buildIndex('bySolved', Edge.class) \
   .addKey(lbl) \
   .addKey(type) \
   .addKey(solver_datetime) \
   .addKey(solver_document_id) \
-  .addKey(solver) \
+  .addKey(solver_name) \
   .addKey(solver_version) \
-  .addKey(installable) \
+  .addKey(solver_error) \
   .buildCompositeIndex()
 
 // Make changes! \o/

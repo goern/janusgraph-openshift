@@ -12,8 +12,8 @@ lbl = mgmt.getPropertyKey('__label__')
 type = mgmt.getPropertyKey('__type__')
 
 ecosystem = mgmt.getPropertyKey('ecosystem')
-name = mgmt.getPropertyKey('name')
-version = mgmt.getPropertyKey('version')
+package_name = mgmt.getPropertyKey('package_name')
+package_version = mgmt.getPropertyKey('package_version')
 
 release = mgmt.getPropertyKey('release')
 epoch = mgmt.getPropertyKey('epoch')
@@ -29,8 +29,8 @@ mgmt.buildIndex('byRPMPackageVersion', Vertex.class) \
   .addKey(lbl) \
   .addKey(type) \
   .addKey(ecosystem) \
-  .addKey(name) \
-  .addKey(version) \
+  .addKey(package_name) \
+  .addKey(package_version) \
   .addKey(release) \
   .addKey(epoch) \
   .addKey(arch) \

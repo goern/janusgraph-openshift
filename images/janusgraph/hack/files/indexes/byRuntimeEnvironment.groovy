@@ -11,11 +11,11 @@ mgmt = graph.openManagement()
 lbl = mgmt.getPropertyKey('__label__')
 type = mgmt.getPropertyKey('__type__')
 
-image = mgmt.getPropertyKey('image')
+image_name = mgmt.getPropertyKey('image_name')
 
 analysis_datetime = mgmt.getPropertyKey('analysis_datetime')
 analysis_document_id = mgmt.getPropertyKey('analysis_document_id')
-analyzer = mgmt.getPropertyKey('analyzer')
+analyzer_name = mgmt.getPropertyKey('analyzer_name')
 analyzer_version = mgmt.getPropertyKey('analyzer_version')
 
 /*
@@ -25,10 +25,10 @@ analyzer_version = mgmt.getPropertyKey('analyzer_version')
 mgmt.buildIndex('byRuntimeEnvironment', Vertex.class) \
   .addKey(lbl) \
   .addKey(type) \
-  .addKey(image) \
+  .addKey(image_name) \
   .addKey(analysis_datetime) \
   .addKey(analysis_document_id) \
-  .addKey(analyzer) \
+  .addKey(analyzer_name) \
   .addKey(analyzer_version) \
   .buildCompositeIndex()
 
