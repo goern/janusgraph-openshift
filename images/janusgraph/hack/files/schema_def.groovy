@@ -12,6 +12,8 @@ if (mgmt.getVertexLabel('runtime_environment') == null)
   mgmt.makeVertexLabel('runtime_environment').make()
 if (mgmt.getVertexLabel('rpm_package_version') == null)
   mgmt.makeVertexLabel('rpm_package_version').make()
+if (mgmt.getVertexLabel('ecosystem_solver') == null)
+  mgmt.makeVertexLabel('ecosystem_solver').make()
 
 if (mgmt.getEdgeLabel('has_version') == null)
   mgmt.makeEdgeLabel('has_version').make()
