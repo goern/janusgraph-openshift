@@ -14,20 +14,17 @@ mgmt = graph.openManagement()
 lbl = mgmt.getPropertyKey('__label__')
 type = mgmt.getPropertyKey('__type__')
 
-solver_datetime = mgmt.getPropertyKey('solver_datetime')
-solver_document_id = mgmt.getPropertyKey('solver_document_id')
-solver_error = mgmt.getPropertyKey('solver_error')
+solver_name = mgmt.getPropertyKey('solver_name')
+solver_version = mgmt.getPropertyKey('solver_version')
 
-/*
- * Indexes.
- */
-mgmt.buildIndex('bySolved', Edge.class) \
+// No property edges match.
+mgmt.buildIndex('byEcosystemSolver', Vertex.class) \
   .addKey(lbl) \
   .addKey(type) \
-  .addKey(solver_datetime) \
-  .addKey(solver_document_id) \
-  .addKey(solver_error) \
+  .addKey(solver_name) \
+  .addKey(solver_version) \
   .buildCompositeIndex()
+
 
 // Make changes! \o/
 mgmt.commit()

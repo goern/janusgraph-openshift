@@ -6,16 +6,17 @@ graph.tx().rollback()
 mgmt = graph.openManagement()
 
 indexes = [
+  'byDependsOn',
+  'byEcosystemSolver',
   'byEdge',
-  'bySolved',
-  'bySolver',
+  'byIsPartOf',
   'byPackage',
   'byPythonPackageVersion',
   'byRequires',
   'byRPMPackageVersion',
   'byRPMRequirement',
   'byRuntimeEnvironment',
-  'bySoftwareStack'
+  'bySolved'
 ]
 
 //Wait for the index to become available
