@@ -11,7 +11,7 @@ mgmt = graph.openManagement()
 lbl = mgmt.getPropertyKey('__label__')
 type = mgmt.getPropertyKey('__type__')
 
-package_name = mgmt.getPropertyKey('package_name')
+rpm_requirement_name = mgmt.getPropertyKey('rpm_requirement_name')
 
 /*
  * Index.
@@ -20,7 +20,7 @@ package_name = mgmt.getPropertyKey('package_name')
 mgmt.buildIndex('byRPMRequirement', Vertex.class) \
   .addKey(lbl) \
   .addKey(type) \
-  .addKey(package_name) \
+  .addKey(rpm_requirement_name) \
   .buildCompositeIndex()
 
 // Make changes! \o/
