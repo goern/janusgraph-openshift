@@ -14,20 +14,19 @@ mgmt = graph.openManagement()
 lbl = mgmt.getPropertyKey('__label__')
 type = mgmt.getPropertyKey('__type__')
 
-solver_datetime = mgmt.getPropertyKey('solver_datetime')
-solver_document_id = mgmt.getPropertyKey('solver_document_id')
-solver_error = mgmt.getPropertyKey('solver_error')
+version_range = mgmt.getPropertyKey('version_range')
+package_name = mgmt.getPropertyKey('package_name')
+extras = mgmt.getPropertyKey('extras')
 
-/*
- * Indexes.
- */
-mgmt.buildIndex('bySolved', Edge.class) \
+// No property edges match.
+mgmt.buildIndex('byDependsOn', Edge.class) \
   .addKey(lbl) \
   .addKey(type) \
-  .addKey(solver_datetime) \
-  .addKey(solver_document_id) \
-  .addKey(solver_error) \
+  .addKey(version_range) \
+  .addKey(package_name) \
+  .addKey(extras) \
   .buildCompositeIndex()
+
 
 // Make changes! \o/
 mgmt.commit()

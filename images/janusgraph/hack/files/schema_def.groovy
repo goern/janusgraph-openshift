@@ -73,8 +73,8 @@ if (mgmt.getPropertyKey('solver_datetime') == null)
 if (mgmt.getPropertyKey('solver_error') == null)
   mgmt.makePropertyKey('solver_error').dataType(Boolean.class).make()
 
-if (mgmt.getPropertyKey('image_name') == null)
-  mgmt.makePropertyKey('image_name').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+if (mgmt.getPropertyKey('runtime_environment_name') == null)
+  mgmt.makePropertyKey('runtime_environment_name').dataType(String.class).cardinality(Cardinality.SINGLE).make()
 
 if (mgmt.getPropertyKey('release') == null)
   mgmt.makePropertyKey('release').dataType(String.class).cardinality(Cardinality.SINGLE).make()
