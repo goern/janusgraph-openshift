@@ -23,6 +23,13 @@ objects:
     name: janusgraph
   spec:
     replicas: 1
+    strategy:
+      type: Recreate
+      activeDeadlineSeconds: 21600
+      customParams: {}
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
     selector:
       service: janusgraph
     template:
@@ -32,7 +39,7 @@ objects:
       spec:
         containers:
         - name: janusgraph
-          image: quay.io/goern/janusgraph
+          image: janusgraph
           env:
           - name: _JAVA_OPTIONS
             value: "-Djava.net.preferIPv4Stack=true"
@@ -88,7 +95,7 @@ objects:
 - apiVersion: v1
   kind: Route
   metadata:
-    name: janusgraph-hostname
+    name: janusgraph
     labels:
       app: janusgraph
   spec:
