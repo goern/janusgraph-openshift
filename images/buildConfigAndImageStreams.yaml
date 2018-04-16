@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: janusgraph-builder
+  template: janusgraph
 metadata:
   annotations:
     description: janusgraph container
     iconClass: janusgraph
-    tags: janusgraph,ai-stack-builder
-  name: janusgraph-builder
+    tags: janusgraph,ai-stack
+  name: janusgraph
 objects:
 - apiVersion: v1
   kind: ImageStream
