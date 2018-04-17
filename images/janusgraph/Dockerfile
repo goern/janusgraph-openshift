@@ -34,6 +34,7 @@ RUN yum install -y unzip nc && \
 USER 1011
 
 ADD entrypoint.sh /opt/janusgraph-0.2.0-hadoop2/
+ADD hack/readiness.sh /tmp
 ADD startup.sh /opt/janusgraph-0.2.0-hadoop2/
 ADD hack/files /opt/janusgraph-0.2.0-hadoop2/files/
 ADD aicoe-berkeleyje-lucene.properties /opt/janusgraph-0.2.0-hadoop2/conf
