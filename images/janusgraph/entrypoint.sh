@@ -20,5 +20,5 @@ fi
 
 export PATH="$PATH:/opt/janusgraph-0.2.0-hadoop2/bin"
 
-gremlin.sh --quiet --execute=/opt/janusgraph-0.2.0-hadoop2/thoth_init.groovy 
+gremlin.sh --execute=/opt/janusgraph-0.2.0-hadoop2/thoth_init.groovy 
 gremlin-server.sh 

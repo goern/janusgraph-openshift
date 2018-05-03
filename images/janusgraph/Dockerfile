@@ -11,7 +11,7 @@ LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSear
     architecture=x86_64 \
     name="aicoe/janusgraph" \
     version="2.0.0" \
-    release="1" \
+    release="2" \
     vendor="Red Hat Office of the CTO - AI CoE" \
     license="GPLv3" 
 
@@ -19,9 +19,11 @@ WORKDIR /opt/janusgraph-${JG_VER}
 
 RUN yum install -y unzip && \
     yum clean all -y && \
+    rm -rf /var/cache/yum && \
     curl -L -o /opt/janusgraph.zip https://github.com/JanusGraph/janusgraph/releases/download/v0.2.0/janusgraph-0.2.0-hadoop2.zip && \
     unzip /opt/janusgraph.zip -d /opt/ && \
     rm /opt/janusgraph.zip && \
+    rm -rf /opt/janusgraph-0.2.0-hadoop2/elasticsearch /opt/janusgraph-0.2.0-hadoop2/data && \
     mkdir -p /opt/janusgraph-0.2.0-hadoop2/db && \
     chmod 777 -R /opt/janusgraph-0.2.0-hadoop2/db/ && \
     chown 1011:0 -R /opt/janusgraph-0.2.0-hadoop2/ && \
