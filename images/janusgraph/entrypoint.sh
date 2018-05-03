@@ -20,5 +20,8 @@ fi
 
 export PATH="$PATH:/opt/janusgraph-0.2.0-hadoop2/bin"
 
+echo 'initializing Graph with Thoth...'
 gremlin.sh -e thoth_init.groovy 
+
+echo 'starting Gremlin Server'
 gremlin-server.sh 

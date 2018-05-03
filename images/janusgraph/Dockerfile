@@ -4,7 +4,7 @@ ARG JANUSGRAPH_VERSION=0.2.0-hadoop2
 
 ENV JG_VER=${JANUSGRAPH_VERSION}
 
-LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSearch" \
+LABEL io.k8s.description="JanusGraph Server, all in one JVM" \
     io.k8s.display-name="JanusGraph ${JG_VER}" \
     io.openshift.expose-services="8182:http" \
     io.openshift.tags="graph,gremlin,janusgraph" \
