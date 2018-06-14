@@ -5,6 +5,8 @@
 
 //mgmt = graph.openManagement()
 
+//if (mgmt.getGraphIndex("bySoftwareStack") == null) {
+
 /*
  * Properties.
  */
@@ -27,4 +29,6 @@
 
 // Make changes! \o/
 //mgmt.commit()
+
+//}
 

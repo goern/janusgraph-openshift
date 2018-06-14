@@ -5,29 +5,32 @@ graph.tx().rollback()
 
 mgmt = graph.openManagement()
 
+if (mgmt.getGraphIndex("byRequires") == null) {
+
 /*
  * Properties.
  */
-lbl = mgmt.getPropertyKey('__label__')
-type = mgmt.getPropertyKey('__type__')
+    lbl = mgmt.getPropertyKey('__label__')
+    type = mgmt.getPropertyKey('__type__')
 
-analysis_datetime = mgmt.getPropertyKey('analysis_datetime')
-analysis_document_id = mgmt.getPropertyKey('analysis_document_id')
-analyzer_name = mgmt.getPropertyKey('analyzer_name')
-analyzer_version = mgmt.getPropertyKey('analyzer_version')
+    analysis_datetime = mgmt.getPropertyKey('analysis_datetime')
+    analysis_document_id = mgmt.getPropertyKey('analysis_document_id')
+    analyzer_name = mgmt.getPropertyKey('analyzer_name')
+    analyzer_version = mgmt.getPropertyKey('analyzer_version')
 
 /*
  * Index.
  */
 // Exact match for Requires.
-mgmt.buildIndex('byRequires', Edge.class) \
-  .addKey(lbl) \
-  .addKey(type) \
-  .addKey(analysis_datetime) \
-  .addKey(analysis_document_id) \
-  .addKey(analyzer_name) \
-  .addKey(analyzer_version) \
-  .buildCompositeIndex()
+   mgmt.buildIndex('byRequires', Edge.class) \
+     .addKey(lbl) \
+     .addKey(type) \
+     .addKey(analysis_datetime) \
+     .addKey(analysis_document_id) \
+     .addKey(analyzer_name) \
+     .addKey(analyzer_version) \
+     .buildCompositeIndex()
 
 // Make changes! \o/
-mgmt.commit()
+   mgmt.commit()
+}
