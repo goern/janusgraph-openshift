@@ -21,6 +21,7 @@ if [ -n "$JANUSGRAPH_USE_INDEXES" ]; then
 	done
 
 	$BIN/gremlin.sh -e $FILES/submit-reindex-jobs.groovy
+	
 
 	echo "Waiting for indexes to be propagated to cluster..." 2>&1
 	sleep 120

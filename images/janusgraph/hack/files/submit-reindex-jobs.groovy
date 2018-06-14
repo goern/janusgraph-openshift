@@ -21,8 +21,23 @@ indexes = [
 
 //Wait for the index to become available
 indexes.each { i ->
-  mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.REGISTERED).call();
-}
+   index = mgmt.getGraphIndex(i)
+   propertykeys = index.getFieldKeys()
+   propertykeys.each { j ->
+   indexof = propertykeys.findIndexOf{it ==~ 'j'}
+   indexcurrentstatus = index.getIndexStatus(propertykeys[indexof])
+   if (indexcurrentstatus == SchemaStatus.ENABLED)
+   {
+    System.err.println "Schema Status in ENABLED"
+   }
+   else    
+   { 
+   mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.REGISTERED).call()   
+   }
+  }
+ }
+
+
 
 //Reindex the existing data by submitting reindex jobs.
 // TODO: once we have more data, we should use MapReduce here.
