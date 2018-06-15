@@ -1,0 +1,34 @@
+:remote connect tinkerpop.server conf/remote.yaml session
+:remote console
+
+graph.tx().rollback()
+
+mgmt = graph.openManagement()
+
+indexes = [
+  'byDependsOn',
+  'byEcosystemSolver',
+  'byEdge',
+  'byIsPartOf',
+  'byPackage',
+  'byPythonPackageVersion',
+  'byRequires',
+  'byRPMPackageVersion',
+  'byRPMRequirement',
+  'byRuntimeEnvironment',
+  'bySolved'
+]
+
+indexes.each { i ->
+   index = mgmt.getGraphIndex(i)
+   propertykeys = index.getFieldKeys()
+   propertykeys.each { j ->
+   indexof = propertykeys.findIndexOf{it ==~ 'j'}
+   indexcurrentstatus = index.getIndexStatus(propertykeys[indexof])
+   if (indexcurrentstatus == SchemaStatus.REGISTERED)
+   { 
+    mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.ENABLED).call()
+   }
+}
+}
+
