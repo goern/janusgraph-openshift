@@ -25,7 +25,7 @@ indexes.each { i ->
    propertykeys.each { j ->
    indexof = propertykeys.findIndexOf{it ==~ 'j'}
    indexcurrentstatus = index.getIndexStatus(propertykeys[indexof])
-   if (indexcurrentstatus == SchemaStatus.ENABLED)
+   if (indexcurrentstatus == SchemaStatus.REGISTERED)
    {
      mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.ENABLED).call()
    }
