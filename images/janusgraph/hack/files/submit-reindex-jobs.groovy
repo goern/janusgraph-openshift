@@ -24,7 +24,7 @@ indexes.each { i ->
   index = mgmt.getGraphIndex(i)
   propertykeys = index.getFieldKeys()
   propertykeys.each { j ->
-  indexof = propertykeys.findIndexOf{it ==~ 'j'}
+  indexof = propertykeys.findIndexOf{it ==~ j}
   indexcurrentstatus = index.getIndexStatus(propertykeys[indexof])
   if (indexcurrentstatus == SchemaStatus.ENABLED)
    {
@@ -32,6 +32,7 @@ indexes.each { i ->
    }
    else if (indexcurrentstatus == SchemaStatus.INSTALLED)  
    { 
+   System.err.println "Schema Status in INSTALLED"
    mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.REGISTERED).call()   
    }
   }
