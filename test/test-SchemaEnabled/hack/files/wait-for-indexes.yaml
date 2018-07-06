@@ -7,16 +7,7 @@ mgmt = graph.openManagement()
 
 indexes = [
   'byDependsOn',
-  'byEcosystemSolver',
-  'byEdge',
-  'byIsPartOf',
-  'byPackage',
-  'byPythonPackageVersion',
-  'byRequires',
-  'byRPMPackageVersion',
-  'byRPMRequirement',
-  'byRuntimeEnvironment',
-  'bySolved'
+  'byEcosystemSolver'
 ]
 
 indexes.each { i ->
@@ -26,9 +17,13 @@ indexes.each { i ->
    indexof = propertykeys.findIndexOf{it ==~ j}
    indexcurrentstatus = index.getIndexStatus(propertykeys[indexof])
    if (indexcurrentstatus == SchemaStatus.REGISTERED)
-   {
-     System.err.println "Schema Status is in REGISTERED mode"
-     mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.ENABLED).call()
+   { 
+    System.err.println "Schema Status is in REGISTERED  awaiting to be ENABLED"
+    mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.ENABLED).call()
+   }
+   else
+   {        
+    System.err.println "Schema Status is already in ENABLED MODE"
    }
 }
 }

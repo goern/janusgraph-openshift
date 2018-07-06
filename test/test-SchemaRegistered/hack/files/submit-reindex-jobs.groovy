@@ -6,17 +6,7 @@ graph.tx().rollback()
 mgmt = graph.openManagement()
 
 indexes = [
-  'byDependsOn',
-  'byEcosystemSolver',
-  'byEdge',
-  'byIsPartOf',
-  'byPackage',
-  'byPythonPackageVersion',
-  'byRequires',
-  'byRPMPackageVersion',
-  'byRPMRequirement',
-  'byRuntimeEnvironment',
-  'bySolved'
+  'byDependsOn'
 ]
 
 //Wait for the index to become available
@@ -32,8 +22,12 @@ indexes.each { i ->
    }
    else if (indexcurrentstatus == SchemaStatus.INSTALLED)  
    { 
-   System.err.println "Schema Status in INSTALLED"
+   System.err.println "Schema Status in INSTALLLED"
    mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.REGISTERED).call()   
+   }
+   else 
+   {
+    System.err.println "Schema Status in REGISTERED MODE already"
    }
   }
  }

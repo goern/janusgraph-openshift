@@ -32,7 +32,7 @@ indexes.each { i ->
    }
    else if (indexcurrentstatus == SchemaStatus.INSTALLED)  
    { 
-   System.err.println "Schema Status in INSTALLED"
+   System.err.println "Schema status in INSTALLED"
    mgmt.awaitGraphIndexStatus(graph, i).status(SchemaStatus.REGISTERED).call()   
    }
   }
