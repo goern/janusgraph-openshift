@@ -36,6 +36,8 @@ objects:
           env:
           - name: _JAVA_OPTIONS
             value: "-Djava.net.preferIPv4Stack=true"
+          - name: JANUSGRAPH_USE_INDEXES
+            value: "1"
           ports:
             - containerPort: 8182
               protocol: TCP
