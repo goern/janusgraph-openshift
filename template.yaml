@@ -50,6 +50,13 @@ objects:
           volumeMounts:
             - mountPath: /opt/janusgraph-0.2.0-hadoop2/db
               name: pv-db
+          resources:
+            limits:
+              cpu: '2'
+              memory: 5Gi
+            requests:
+              cpu: '2'
+              memory: 5Gi
         restartPolicy: Always
         volumes:
           - name: pv-db
