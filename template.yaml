@@ -44,9 +44,10 @@ objects:
           readinessProbe:
             exec:
               command: ["sh", "/tmp/readiness.sh"]
-            initialDelaySeconds: 20
-            periodSeconds: 10
+            initialDelaySeconds: 480
+            periodSeconds: 30
             timeoutSeconds: 10
+            failureThreshold: 3
           volumeMounts:
             - mountPath: /opt/janusgraph-0.2.0-hadoop2/db
               name: pv-db
