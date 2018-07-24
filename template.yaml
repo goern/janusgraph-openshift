@@ -36,18 +36,28 @@ objects:
           env:
           - name: _JAVA_OPTIONS
             value: "-Djava.net.preferIPv4Stack=true"
+          - name: JANUSGRAPH_USE_INDEXES
+            value: "1"
           ports:
             - containerPort: 8182
               protocol: TCP
           readinessProbe:
             exec:
               command: ["sh", "/tmp/readiness.sh"]
-            initialDelaySeconds: 20
-            periodSeconds: 10
+            initialDelaySeconds: 480
+            periodSeconds: 30
             timeoutSeconds: 10
+            failureThreshold: 3
           volumeMounts:
             - mountPath: /opt/janusgraph-0.2.0-hadoop2/db
               name: pv-db
+          resources:
+            limits:
+              cpu: '2'
+              memory: 5Gi
+            requests:
+              cpu: '2'
+              memory: 5Gi
         restartPolicy: Always
         volumes:
           - name: pv-db
