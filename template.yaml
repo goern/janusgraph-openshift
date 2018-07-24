@@ -10,6 +10,9 @@ metadata:
     template.openshift.io/long-description: This template defines resources needed
       to deploy JanusGraph Server as a Proof-of-Concept to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    app: janusgraph
+    component: janusgraph
 message: |-
   For more information about using this template see https://github.com/goern/janusgraph-openshift/
 
@@ -18,8 +21,8 @@ objects:
   kind: DeploymentConfig
   metadata:
     labels:
-      service: janusgraph
       app: janusgraph
+      component: janusgraph
     name: janusgraph
   spec:
     replicas: 1
