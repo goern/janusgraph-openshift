@@ -51,9 +51,9 @@ objects:
             periodSeconds: 30
             timeoutSeconds: 10
             failureThreshold: 3
-          volumeMounts:
-            - mountPath: /opt/janusgraph-0.2.0-hadoop2/db
-              name: pv-db
+          # volumeMounts:
+          #   - mountPath: /opt/janusgraph-0.2.0-hadoop2/db
+          #     name: pv-db
           resources:
             limits:
               cpu: '2'
@@ -62,26 +62,26 @@ objects:
               cpu: '2'
               memory: 5Gi
         restartPolicy: Always
-        volumes:
-          - name: pv-db
-            persistentVolumeClaim:
-              claimName: janusgraph-db
+        #volumes:
+        #  - name: pv-db
+        #    persistentVolumeClaim:
+        #      claimName: janusgraph-db
         restartPolicy: Always
     triggers:
     - type: ConfigChange
 
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: janusgraph-db
-    labels:
-      app: janusgraph
-  spec:
-    accessModes:
-      - ReadWriteOnce
-    resources:
-      requests:
-        storage: 10Gi
+#- apiVersion: v1
+#  kind: PersistentVolumeClaim
+#  metadata:
+#    name: janusgraph-db
+#    labels:
+#      app: janusgraph
+#  spec:
+#    accessModes:
+#      - ReadWriteOnce
+#    resources:
+#      requests:
+#        storage: 10Gi
 
 - apiVersion: v1
   kind: Service
