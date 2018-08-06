@@ -6,6 +6,7 @@ graph.tx().rollback()
 mgmt = graph.openManagement()
 
 indexes = [
+  'byCVE',
   'byDependsOn',
   'byEcosystemSolver',
   'byEdge',
@@ -16,7 +17,7 @@ indexes = [
   'byRPMPackageVersion',
   'byRPMRequirement',
   'byRuntimeEnvironment',
-  'bySolved'
+  'bySolved',
 ]
 
 indexes.each { i ->
