@@ -18,8 +18,9 @@ LABEL io.k8s.description="JanusGraph Server, backed by Cassandra and ElasticSear
 WORKDIR /opt/janusgraph-${JG_VER}
 
 USER 0
-RUN yum install -y unzip && \
-    yum clean all -y && \
+RUN yum install -y –setopt=tsflags=nodocs unzip && \
+    yum update -y –setopt=tsflags=nodocs && \
+    yum clean all -y –setopt=tsflags=nodocs && \
     curl -L -o /opt/janusgraph.zip https://github.com/JanusGraph/janusgraph/releases/download/v0.2.0/janusgraph-0.2.0-hadoop2.zip && \
     unzip /opt/janusgraph.zip -d /opt/ && \
     rm /opt/janusgraph.zip && \
