@@ -14,6 +14,8 @@ if (mgmt.getVertexLabel('rpm_package_version') == null)
   mgmt.makeVertexLabel('rpm_package_version').make()
 if (mgmt.getVertexLabel('ecosystem_solver') == null)
   mgmt.makeVertexLabel('ecosystem_solver').make()
+if (mgmt.getVertexLabel('cve') == null)
+  mgmt.makeVertexLabel('cve').make()
 
 if (mgmt.getEdgeLabel('has_version') == null)
   mgmt.makeEdgeLabel('has_version').make()
@@ -29,6 +31,8 @@ if (mgmt.getEdgeLabel('solved') == null)
   mgmt.makeEdgeLabel('solved').make()
 if (mgmt.getEdgeLabel('runs_in') == null)
   mgmt.makeEdgeLabel('runs_in').make()
+if (mgmt.getEdgeLabel('has_vulnerability') == null)
+  mgmt.makeEdgeLabel('has_vulnerability').make()
 
 if (mgmt.getPropertyKey('ecosystem') == null)
   mgmt.makePropertyKey('ecosystem').dataType(String.class).cardinality(Cardinality.SINGLE).make()
@@ -92,6 +96,15 @@ if (mgmt.getPropertyKey('src') == null)
 
 if (mgmt.getPropertyKey('package_identifier') == null)
   mgmt.makePropertyKey('package_identifier').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('advisory') == null)
+  mgmt.makePropertyKey('advisory').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cve_name') == null)
+  mgmt.makePropertyKey('cve_name').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cve_id') == null)
+  mgmt.makePropertyKey('cve_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
 
 if (mgmt.getPropertyKey('__label__') == null)
   mgmt.makePropertyKey('__label__').dataType(String.class).cardinality(Cardinality.SINGLE).make()
