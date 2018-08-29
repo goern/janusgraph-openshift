@@ -28,7 +28,7 @@ RUN yum install -y --setopt=tsflags=nodocs unzip && \
     chmod 777 -R /opt/janusgraph-0.2.0-hadoop2/db/ && \
     chown 1011:0 -R /opt/janusgraph-0.2.0-hadoop2/ && \
     sed -i 's/^storage.backend=cassandrathrift/storage.backend=cql/' /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/janusgraph-cassandra-es-server.properties && \
-    sed -i 's/^scriptEvaluationTimeout: 30000/scriptEvaluationTimeout: 70000/' /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/gremlin-server.yaml && \
+    sed -i 's/^scriptEvaluationTimeout: 30000/scriptEvaluationTimeout: 90000/' /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/gremlin-server.yaml && \
     echo 'schema.default=none' >> /opt/janusgraph-0.2.0-hadoop2/conf/gremlin-server/janusgraph-cassandra-es-server.properties && \
     chmod a+rw /etc/passwd  # needed for entrypoint
 
