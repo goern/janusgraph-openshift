@@ -7,6 +7,7 @@ mgmt = graph.openManagement()
 
 indexes = [
   'byCVE',
+  'byDebPackageVersion',
   'byDependsOn',
   'byEcosystemSolver',
   'byEdge',
