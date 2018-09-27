@@ -46,6 +46,9 @@ if (mgmt.getPropertyKey('version_range') == null)
 if (mgmt.getPropertyKey('package_name') == null)
   mgmt.makePropertyKey('package_name').dataType(String.class).make()
 
+if (mgmt.getPropertyKey('index') == null)
+  mgmt.makePropertyKey('index').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
 if (mgmt.getPropertyKey('extras') == null)
   mgmt.makePropertyKey('extras').dataType(String.class).make()
 
