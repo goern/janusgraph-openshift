@@ -16,6 +16,10 @@ if (mgmt.getVertexLabel('rpm_package_version') == null)
   mgmt.makeVertexLabel('rpm_package_version').make()
 if (mgmt.getVertexLabel('ecosystem_solver') == null)
   mgmt.makeVertexLabel('ecosystem_solver').make()
+if (mgmt.getVertexLabel('software_stack_observation') == null)
+  mgmt.makeVertexLabel('software_stack_observation').make()
+if (mgmt.getVertexLabel('hardware_information') == null)
+  mgmt.makeVertexLabel('hardware_information').make()
 if (mgmt.getVertexLabel('cve') == null)
   mgmt.makeVertexLabel('cve').make()
 
@@ -41,6 +45,8 @@ if (mgmt.getEdgeLabel('deb_depends') == null)
   mgmt.makeEdgeLabel('deb_depends').make()
 if (mgmt.getEdgeLabel('deb_pre_depends') == null)
   mgmt.makeEdgeLabel('deb_pre_depends').make()
+if (mgmt.getEdgeLabel('observation_document_id') == null)
+  mgmt.makeEdgeLabel('observation_document_id').make()
 
 if (mgmt.getPropertyKey('ecosystem') == null)
   mgmt.makePropertyKey('ecosystem').dataType(String.class).cardinality(Cardinality.SINGLE).make()
@@ -113,6 +119,48 @@ if (mgmt.getPropertyKey('cve_name') == null)
 
 if (mgmt.getPropertyKey('cve_id') == null)
   mgmt.makePropertyKey('cve_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('observation_document_id') == null)
+  mgmt.makePropertyKey('observation_document_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('document_id') == null)
+  mgmt.makePropertyKey('document_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('installable') == null)
+  mgmt.makePropertyKey('installable').dataType(Boolean.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('performance_index') == null)
+  mgmt.makePropertyKey('performance_index').dataType(Float.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cpu_vendor') == null)
+  mgmt.makePropertyKey('cpu_vendor').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cpu_model_name') == null)
+  mgmt.makePropertyKey('cpu_model_name').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cpu_model') == null)
+  mgmt.makePropertyKey('cpu_model').dataType(Integer.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cpu_family') == null)
+  mgmt.makePropertyKey('cpu_family').dataType(Integer.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('cpu_cores') == null)
+  mgmt.makePropertyKey('cpu_cores').dataType(Integer.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('gpu_vendor') == null)
+  mgmt.makePropertyKey('gpu_vendor').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('gpu_model_name') == null)
+  mgmt.makePropertyKey('gpu_model_name').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('gpu_cores') == null)
+  mgmt.makePropertyKey('gpu_cores').dataType(Integer.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('gpu_memory_size') == null)
+  mgmt.makePropertyKey('gpu_memory_size').dataType(Integer.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('gpu_ram_size') == null)
+  mgmt.makePropertyKey('gpu_ram_size').dataType(Integer.class).cardinality(Cardinality.SINGLE).make()
 
 if (mgmt.getPropertyKey('__label__') == null)
   mgmt.makePropertyKey('__label__').dataType(String.class).cardinality(Cardinality.SINGLE).make()
