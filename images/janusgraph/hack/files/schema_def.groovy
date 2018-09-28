@@ -123,9 +123,6 @@ if (mgmt.getPropertyKey('cve_name') == null)
 if (mgmt.getPropertyKey('cve_id') == null)
   mgmt.makePropertyKey('cve_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
 
-if (mgmt.getPropertyKey('observation_document_id') == null)
-  mgmt.makePropertyKey('observation_document_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
-
 if (mgmt.getPropertyKey('document_id') == null)
   mgmt.makePropertyKey('document_id').dataType(String.class).cardinality(Cardinality.SINGLE).make()
 
