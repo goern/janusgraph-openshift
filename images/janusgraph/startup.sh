@@ -24,7 +24,7 @@ if [ -n "$JANUSGRAPH_USE_INDEXES" ]; then
 	
 
 	echo "Waiting for indexes to be propagated to cluster..." 2>&1
-	sleep 120
+	sleep 200
 	$BIN/gremlin.sh -e $FILES/wait-for-indexes.yaml
 fi
 
