@@ -17,6 +17,7 @@ if (mgmt.getGraphIndex("bySolved") == null) {
   solver_datetime = mgmt.getPropertyKey('solver_datetime')
   solver_document_id = mgmt.getPropertyKey('solver_document_id')
   solver_error = mgmt.getPropertyKey('solver_error')
+  solver_error = mgmt.getPropertyKey('solver_unsolvable')
 
   /*
   * Indexes.
@@ -27,6 +28,7 @@ if (mgmt.getGraphIndex("bySolved") == null) {
    .addKey(solver_datetime) \
    .addKey(solver_document_id) \
    .addKey(solver_error) \
+   .addKey(solver_unsolvable) \
    .buildCompositeIndex()
 
   // Make changes! \o/

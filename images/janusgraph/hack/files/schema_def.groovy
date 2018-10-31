@@ -96,6 +96,9 @@ if (mgmt.getPropertyKey('solver_datetime') == null)
 if (mgmt.getPropertyKey('solver_error') == null)
   mgmt.makePropertyKey('solver_error').dataType(Boolean.class).make()
 
+if (mgmt.getPropertyKey('solver_unsolvable') == null)
+  mgmt.makePropertyKey('solver_unsolvable').dataType(Boolean.class).make()
+
 if (mgmt.getPropertyKey('runtime_environment_name') == null)
   mgmt.makePropertyKey('runtime_environment_name').dataType(String.class).cardinality(Cardinality.SINGLE).make()
 
