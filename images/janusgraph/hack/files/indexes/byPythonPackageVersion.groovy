@@ -17,7 +17,8 @@ if (mgmt.getGraphIndex("byPythonPackageVersion") == null) {
   ecosystem = mgmt.getPropertyKey('ecosystem')
   package_name = mgmt.getPropertyKey('package_name')
   package_version = mgmt.getPropertyKey('package_version')
-  index = mgmt.getPropertyKey('index')
+  // TODO: add index
+  //index = mgmt.getPropertyKey('index')
 
   /*
   * Indexes.
@@ -29,7 +30,6 @@ if (mgmt.getGraphIndex("byPythonPackageVersion") == null) {
    .addKey(ecosystem) \
    .addKey(package_name) \
    .addKey(package_version) \
-   .addKey(index) \
    .buildCompositeIndex()
 
   // Make changes! \o/
