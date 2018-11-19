@@ -4,6 +4,8 @@ if (mgmt.getVertexLabel('package') == null)
   mgmt.makeVertexLabel('package').make()
 if (mgmt.getVertexLabel('software_stack') == null)
   mgmt.makeVertexLabel('software_stack').make()
+if (mgmt.getVertexLabel('python_package_index') == null)
+  mgmt.makeVertexLabel('python_package_index').make()
 if (mgmt.getVertexLabel('python_package_version') == null)
   mgmt.makeVertexLabel('python_package_version').make()
 if (mgmt.getVertexLabel('rpm_requirement') == null)
@@ -77,6 +79,18 @@ if (mgmt.getPropertyKey('analyzer_name') == null)
 
 if (mgmt.getPropertyKey('analyzer_version') == null)
   mgmt.makePropertyKey('analyzer_version').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('url') == null)
+  mgmt.makePropertyKey('url').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('warehouse_api_url') == null)
+  mgmt.makePropertyKey('warehouse_api_url').dataType(String.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('verify_ssl') == null)
+  mgmt.makePropertyKey('verify_ssl').dataType(Boolean.class).cardinality(Cardinality.SINGLE).make()
+
+if (mgmt.getPropertyKey('warehouse') == null)
+  mgmt.makePropertyKey('warehouse').dataType(Boolean.class).cardinality(Cardinality.SINGLE).make()
 
 if (mgmt.getPropertyKey('package_version') == null)
   mgmt.makePropertyKey('package_version').dataType(String.class).cardinality(Cardinality.SINGLE).make()
